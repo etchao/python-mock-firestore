@@ -14,6 +14,15 @@ class CollectionReference:
         self._path = path
         self.parent = parent
 
+    @property
+    def id(self):
+        """The collection identifier.
+
+        Returns:
+            str: The last component of the path.
+        """
+        return self._path[-1]
+
     def document(self, document_id: Optional[str] = None) -> DocumentReference:
         collection = get_by_path(self._data, self._path)
         if document_id is None:
